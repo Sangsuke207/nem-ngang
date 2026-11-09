@@ -891,36 +891,76 @@
                         </div>
                     </div>
 
-                    <!-- Đồ thị H = dy max -->
-                    <div class="bg-white border-2 border-slate-200 rounded-2xl p-3 shadow-sm">
-                        <svg viewBox="0 0 460 265" class="w-full h-auto">
-                            <defs>
-                                <marker id="s5-arr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-                                    <path d="M 0 1 L 10 5 L 0 9 z" fill="#1e293b"/>
-                                </marker>
-                            </defs>
-                            <line x1="75" y1="35" x2="420" y2="35" stroke="#1e293b" stroke-width="2" marker-end="url(#s5-arr)"/>
-                            <text x="430" y="40" font-family="'Times New Roman', serif" font-size="18" font-style="italic" font-weight="bold">x</text>
+<!-- Đồ thị H = dy max -->
+<div class="bg-white border-2 border-slate-200 rounded-2xl p-3 shadow-sm">
+    <svg viewBox="0 0 460 310" class="w-full h-auto" style="font-family: Arial, sans-serif;">
+        <defs>
+            <!-- Lưới ô vuông nền -->
+            <pattern id="s5-grid" width="32" height="28" patternUnits="userSpaceOnUse">
+                <path d="M 32 0 L 0 0 0 28" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+            </pattern>
+            <!-- Các đầu mũi tên -->
+            <marker id="s5-arr-axis" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f172a"/>
+            </marker>
+            <marker id="s5-arr-blue" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7"/>
+            </marker>
+            <marker id="s5-arr-purple" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#7c3aed"/>
+            </marker>
+            <marker id="s5-arr-red" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+            </marker>
+        </defs>
 
-                            <line x1="75" y1="35" x2="75" y2="245" stroke="#1e293b" stroke-width="2" marker-end="url(#s5-arr)"/>
-                            <text x="55" y="250" font-family="'Times New Roman', serif" font-size="18" font-style="italic" font-weight="bold">y</text>
-                            <text x="55" y="32" font-family="'Times New Roman', serif" font-size="18" font-weight="bold">O</text>
+        <!-- Nền lưới -->
+        <rect x="10" y="5" width="440" height="295" fill="url(#s5-grid)" />
 
-                            <path d="M 75 35 Q 230 35 375 215" fill="none" stroke="#0284c7" stroke-width="3.5"/>
+        <!-- Trục tọa độ Ox, Oy -->
+        <line x1="52" y1="36" x2="425" y2="36" stroke="#0f172a" stroke-width="2.2" marker-end="url(#s5-arr-axis)"/>
+        <text x="422" y="28" fill="#0f172a" font-size="16" font-weight="500">x</text>
 
-                            <line x1="75" y1="215" x2="395" y2="215" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5,5"/>
-                            <text x="12" y="220" fill="#be123c" font-family="'Times New Roman', serif" font-size="16" font-weight="bold">H = d<tspan font-size="11" dy="3">y max</tspan></text>
+        <line x1="62" y1="26" x2="62" y2="290" stroke="#0f172a" stroke-width="2.2" marker-end="url(#s5-arr-axis)"/>
+        <text x="70" y="295" fill="#0f172a" font-size="16" font-weight="500">y</text>
+        <text x="44" y="32" fill="#0f172a" font-size="16" font-weight="500">O</text>
 
-                            <line x1="235" y1="35" x2="235" y2="105" stroke="#94a3b8" stroke-dasharray="4,4"/>
-                            <line x1="75" y1="105" x2="235" y2="105" stroke="#94a3b8" stroke-dasharray="4,4"/>
-                            <text x="48" y="110" font-family="'Times New Roman', serif" font-size="16" font-style="italic">d<tspan font-size="12" dy="3">y</tspan></text>
-                            <text x="228" y="25" font-family="'Times New Roman', serif" font-size="16" font-style="italic">d<tspan font-size="12" dy="3">x</tspan></text>
+        <!-- Đường gióng tọa độ điểm M (x = 300, y = 165) -->
+        <line x1="300" y1="36" x2="300" y2="165" stroke="#64748b" stroke-width="1.6" stroke-dasharray="6,4"/>
+        <line x1="62" y1="165" x2="300" y2="165" stroke="#64748b" stroke-width="1.6" stroke-dasharray="6,4"/>
 
-                            <circle cx="75" cy="35" r="8" fill="#e11d48"/>
-                            <circle cx="235" cy="105" r="8" fill="#e11d48"/>
-                            <text x="245" y="98" fill="#e11d48" font-weight="bold" font-size="15">M</text>
-                        </svg>
-                    </div>
+        <text x="164" y="28" fill="#0369a1" font-size="13.5" font-weight="bold">dx = x</text>
+        <text x="22" y="102" fill="#7c3aed" font-size="13.5" font-weight="bold">dy = y</text>
+
+        <!-- Quỹ đạo Parabol hồng (đi chuẩn qua điểm M(300, 165)) -->
+        <path d="M 62 36 Q 222.2 36 386 276" fill="none" stroke="#ec4899" stroke-width="3.2"/>
+
+        <!-- Vectơ vận tốc đầu v0 tại O -->
+        <line x1="62" y1="36" x2="142" y2="36" stroke="#0284c7" stroke-width="2.8" marker-end="url(#s5-arr-blue)"/>
+        <text x="100" y="28" fill="#0284c7" font-size="14" font-weight="bold">v0</text>
+
+        <!-- Điểm gốc O -->
+        <circle cx="62" cy="36" r="6.5" fill="#ec4899" stroke="#831843" stroke-width="1.5"/>
+
+        <!-- Hình chữ nhật chấm đỏ tổng hợp vận tốc tại M -->
+        <line x1="385" y1="165" x2="385" y2="248" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="2.5,3.5"/>
+        <line x1="300" y1="248" x2="385" y2="248" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="2.5,3.5"/>
+
+        <!-- Các vectơ vận tốc thành phần vx, vy và vM tại M -->
+        <line x1="300" y1="165" x2="380" y2="165" stroke="#0284c7" stroke-width="2.6" marker-end="url(#s5-arr-blue)"/>
+        <text x="374" y="157" fill="#0284c7" font-size="14" font-weight="bold">vx</text>
+
+        <line x1="300" y1="165" x2="300" y2="243" stroke="#7c3aed" stroke-width="2.6" marker-end="url(#s5-arr-purple)"/>
+        <text x="277" y="244" fill="#7c3aed" font-size="14" font-weight="bold">vy</text>
+
+        <line x1="300" y1="165" x2="381" y2="244" stroke="#dc2626" stroke-width="3" marker-end="url(#s5-arr-red)"/>
+        <text x="390" y="251" fill="#dc2626" font-size="15" font-weight="bold">vM</text>
+
+        <!-- Điểm M -->
+        <circle cx="300" cy="165" r="6.5" fill="#ec4899" stroke="#831843" stroke-width="1.5"/>
+        <text x="307" y="157" fill="#831843" font-size="15.5" font-weight="bold">M</text>
+    </svg>
+</div>
                 </div>
             </div>
         </section>
